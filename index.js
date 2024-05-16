@@ -10,12 +10,14 @@ const connectDB = require("./config/db");
 const bodyParser = require("body-parser");
 const { notFound, errorHandler } = require("./middlewares/errorHandling");
 const authRouter = require("./routes/authRoute");
+const userRouter = require("./routes/userRoute");
 
 connectDB();
 
 app.use(bodyParser.json());
 
-app.use("/api/user", authRouter);
+app.use("/api/auth/user", authRouter);
+app.use("/api/user", userRouter);
 
 app.use(notFound);
 app.use(errorHandler);
